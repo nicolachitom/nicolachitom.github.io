@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi-corazón</title>
+</head>
+<style>
+    body {
+        margin: 0;   
+        padding: 0;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background-color: black;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .hearth {
+        height: 150px;
+        width: 150px;
+        background-color: red;
+        position: relative;
+        transform: rotate(45deg);
+        box-shadow: -20px 20px 150px #f20404;
+        animation: palpitar 0.5s linear infinite alternate;
+        cursor: pointer; /* Cambia el cursor al pasar sobre el corazón */
+        transition: transform 0.3s; /* Suaviza la transformación */
+    }
+
+    .contenido {
+        position: fixed;
+        margin-bottom: 50px;
+        text-align: center;
+    }
+
+    h1, h2 {
+        color: white;
+    }
+
+    @keyframes palpitar {
+        0% { transform: rotate(45deg) scale(1.10); }
+        80% { transform: rotate(45deg) scale(1.0); }
+        100% { transform: rotate(45deg) scale(0.8); }
+    }
+
+    .hearth::before, .hearth::after {
+        content: "";
+        position: absolute;
+        height: 150px;
+        width: 150px;
+        background-color: red;
+        border-radius: 50%;
+        box-shadow: 20px 20px 150px #f20404;
+    }
+
+    .hearth::before {
+        right: 50%;
+    }
+
+    .hearth::after {
+        top: -50%;
+    }
+
+    .background-text {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        color: rgb(255, 255, 255);
+        font-size: 3rem; /* Tamaño de fuente ajustado */
+        text-align: center;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        opacity: 0.1; /* Controla la opacidad del texto */
+    }
+
+    .word {
+        position: absolute;
+        color: rgb(255, 255, 255); /* Color de las palabras de amor */
+        animation: move 10s linear infinite;
+    }
+
+    /* Posicionamiento de las palabras alrededor del corazón */
+    .word:nth-child(1) { top: -30px; left: 50%; transform: translateX(-50%); }
+    .word:nth-child(2) { top: 20px; left: 90%; transform: translate(-50%, -50%); }
+    .word:nth-child(3) { top: 80px; left: 60%; transform: translate(-50%, -50%); }
+    .word:nth-child(4) { top: 100px; left: 30%; transform: translate(-50%, -50%); }
+    .word:nth-child(5) { top: 50%; left: 0; transform: translateY(-50%); }
+    .word:nth-child(6) { top: 50%; left: 100%; transform: translate(-100%, -50%); }
+    .word:nth-child(7) { top: 60%; left: 70%; transform: translate(-50%, -50%); }
+    .word:nth-child(8) { top: 40%; left: 20%; transform: translate(-50%, -50%); }
+    .word:nth-child(9) { top: 20%; left: 70%; transform: translate(-50%, -50%); }
+    .word:nth-child(10) { top: 80%; left: 80%; transform: translate(-50%, -50%); }
+
+    @keyframes move {
+        0% { transform: translateY(0); }
+        100% { transform: translateY(-20px); }
+    }
+
+    /* Estilo para el texto grande y la imagen */
+    .mensaje {
+      /* Inicialmente oculto */
+        color: #ffffff; /* Rojo intenso */
+        font-size: 3rem;
+        margin-top: 20px;
+        text-align: center;
+        text-shadow: 2px 2px 5px rgba(255, 0, 0, 0.8); /* Sombra para resaltar */
+    }
+
+    .imagen-container {
+        margin-top: 20px;
+        display: none; /* Inicialmente oculto */
+        text-align: center;
+    }
+
+    .imagen {
+        width: 300px; /* Ajusta el tamaño de la imagen */
+        height: auto;
+        border-radius: 10px; /* Esquinas redondeadas */
+    }
+</style>
+<body>
+    <div class="hearth" onclick="agrandarCorazon()"></div>
+    <div class="contenido"><h1>te amo</h1><h2>mi niña</h2></div>
+    <div class="background-text">
+        <span class="word">amor</span>
+        <span class="word">muñeca</span>
+        <span class="word">reina</span>
+        <span class="word">princesa</span>
+        <span class="word">ternura</span>
+        <span class="word">corazón</span>
+        <span class="word">vida</span>
+        <span class="word">felicidad</span>
+        <span class="word">esposita</span>
+        <span class="word">culona</span>
+        
+    </div>
+
+    <div class="mensaje" id="mensaje">¡Eres mi todo! NOS VAMOS A CASAR</div>
+    <div class="imagen-container" id="imagenContainer">
+        <img src="tu-imagen.jpg" alt="Imagen de amor" class="imagen">
+    </div>
+
+    <script>
+        function agrandarCorazon() {
+            const corazon = document.querySelector('.hearth');
+            const mensaje = document.getElementById('mensaje');
+            const imagenContainer = document.getElementById('imagenContainer');
+            
+            // Agrandar el corazón
+            corazon.style.transform = 'rotate(45deg) scale(1.5)'; // Aumenta el tamaño
+            setTimeout(() => {
+                corazon.style.transform = 'rotate(45deg) scale(1)'; // Regresa al tamaño original
+            }, 300); // Regresa después de 300ms
+            
+            // Mostrar el mensaje y la imagen
+            mensaje.style.display = 'block';
+            imagenContainer.style.display = 'block';
+        }
+    </script>
+</body>
+</html>
